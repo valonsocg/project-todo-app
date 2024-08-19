@@ -3,7 +3,123 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Sunbird Notes</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1>Sunbird Notes</h1>
+    </header>
+
+    <aside>
+      <img src="./assets/sunbird-logo.jpeg" alt="sunbird logo" />
+      <h2>Projects</h2>
+
+      <form action="" id="new-project-form">
+        <input type="text" placeholder="Create New Project" />
+        <div tabindex="0" class="plusButton">
+          <svg
+            class="plusIcon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 30 30"
+          >
+            <g mask="url(#mask0_21_345)">
+              <path
+                d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z"
+              ></path>
+            </g>
+          </svg>
+        </div>
+      </form>
+
+      <ul class="aside-list-projects">
+        <li class="aside-card">
+          <h4>Project 1asdadasasdasdasdsd</h4>
+          <div class="aside-list-priority">
+            <p>Priority <span>HIGH</span></p>
+          </div>
+        </li>
+        <li class="aside-card active">
+          <h4>Project 2asdasdas</h4>
+          <div class="aside-list-priority">
+            <p>Priority <span>LOW</span></p>
+          </div>
+        </li>
+      </ul>
+    </aside>
+    <main>
+      <div class="main-project-card">
+        <h3>Desarrollo Backend</h3>
+        <p>Learn all the tecnologies to become a backend developer.</p>
+        <div class="main-date-priority">
+          <p>Target Date <span>12/08/2024</span></p>
+          <p>Priority <span>HIGH</span></p>
+        </div>
+        <ul class="main-tasks-ul">
+          <li class="main-task-li">
+            <div class="task-content">
+              <label class="checkbox-btn">
+                <label for="checkbox"></label>
+                <input id="1" type="checkbox" />
+                <span class="checkmark"></span>
+              </label>
+              <span contenteditable>Learn Java</span>
+            </div>
+            <button class="button">
+              <span class="X"></span>
+              <span class="Y"></span>
+              <div class="close">Close</div>
+            </button>
+          </li>
+          <li class="main-task-li complete">
+            <div class="task-content">
+              <label class="checkbox-btn">
+                <label for="checkbox"></label>
+                <input id="2" type="checkbox" />
+                <span class="checkmark"></span>
+              </label>
+              <span contenteditable>Learn Python</span>
+            </div>
+            <button class="button">
+              <span class="X"></span>
+              <span class="Y"></span>
+              <div class="close">Close</div>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer>
+      <h5>Made by Alonso.Dev</h5>
+    </footer>
+    <dialog>
+      <form action="">
+        <fieldset>
+          <legend>Add New Task</legend>
+          <label for="">Name</label>
+          <input type="text" />
+          <label for="">Description</label>
+          <input type="text" />
+
+          <label for="">dueDate</label>
+          <input type="date" />
+
+          <fieldset>
+            <legend>Priority</legend>
+            <input type="radio" />
+            <label for="">low</label>
+            <input type="radio" />
+            <label for="">normal</label>
+            <input type="radio" />
+            <label for="">high</label>
+          </fieldset>
+        </fieldset>
+      </form>
+    </dialog>
+  </body>
 </html>
