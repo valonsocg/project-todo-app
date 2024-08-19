@@ -193,6 +193,7 @@ aside {
     list-style-type: none;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
     padding: 1rem;
     border: 2px solid var(--main-yellow);
@@ -201,10 +202,13 @@ aside {
 
     & h4 {
       font-size: 1.5rem;
+      pointer-events: none;
     }
 
     & .aside-list-priority {
       text-align: center;
+      /* makes the element to not interact with a click */
+      pointer-events: none;
     }
 
     & span {
@@ -371,7 +375,7 @@ main {
 }
 
 /* boton x task li */
-.button {
+.buttonX {
   position: relative;
   width: 2em;
   height: 2em;
@@ -423,15 +427,15 @@ main {
   opacity: 0;
 }
 
-.button:hover {
+.buttonX:hover {
   background-color: var(--main-red);
 }
 
-.button:active {
+.buttonX:active {
   background-color: var(--main-red);
 }
 
-.button:hover > .close {
+.buttonX:hover > .close {
   animation: close 0.2s forwards 0.25s;
 }
 
@@ -461,6 +465,70 @@ main {
   & span[contenteditable]:hover {
     background-color: var(--main-skyblue);
   }
+}
+
+/* delete project button */
+.buttonD {
+  position: relative;
+  align-self: flex-end;
+  margin-right: 1rem;
+  border-radius: 6px;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--main-red);
+  background-color: var(--main-red);
+  overflow: hidden;
+}
+
+.buttonD,
+.button__icon,
+.button__text {
+  transition: all 0.3s;
+}
+
+.buttonD .button__text {
+  transform: translateX(35px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.buttonD .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: var(--main-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonD .svg {
+  width: 20px;
+}
+
+.buttonD:hover {
+  background: var(--main-red);
+}
+
+.buttonD:hover .button__text {
+  color: transparent;
+}
+
+.buttonD:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.buttonD:active .button__icon {
+  background-color: var(--main-red);
+}
+
+.buttonD:active {
+  border: 1px solid var(--main-red);
 }
 
 /* footer styles */

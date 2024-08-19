@@ -21,8 +21,8 @@
       <h2>Projects</h2>
 
       <form action="" id="new-project-form">
-        <input type="text" placeholder="Create New Project" />
-        <div tabindex="0" class="plusButton">
+        <input type="text" placeholder="Create New Project" id="form-input" />
+        <div tabindex="0" class="plusButton" id="new-project-btn">
           <svg
             class="plusIcon"
             xmlns="http://www.w3.org/2000/svg"
@@ -38,18 +38,18 @@
       </form>
 
       <ul class="aside-list-projects">
-        <li class="aside-card">
+        <!-- <li class="aside-card" id="1">
           <h4>Project 1asdadasasdasdasdsd</h4>
-          <div class="aside-list-priority">
-            <p>Priority <span>HIGH</span></p>
-          </div>
-        </li>
-        <li class="aside-card active">
-          <h4>Project 2asdasdas</h4>
           <div class="aside-list-priority">
             <p>Priority <span>LOW</span></p>
           </div>
         </li>
+        <li class="aside-card active" id="2">
+          <h4>Desarrollo Backend</h4>
+          <div class="aside-list-priority">
+            <p>Priority <span>HIGH</span></p>
+          </div>
+        </li> -->
       </ul>
     </aside>
     <main>
@@ -70,7 +70,7 @@
               </label>
               <span contenteditable>Learn Java</span>
             </div>
-            <button class="button">
+            <button class="buttonX">
               <span class="X"></span>
               <span class="Y"></span>
               <div class="close">Close</div>
@@ -80,18 +80,104 @@
             <div class="task-content">
               <label class="checkbox-btn">
                 <label for="checkbox"></label>
-                <input id="2" type="checkbox" />
+                <input id="2" type="checkbox" checked />
                 <span class="checkmark"></span>
               </label>
               <span contenteditable>Learn Python</span>
             </div>
-            <button class="button">
+            <button class="buttonX">
               <span class="X"></span>
               <span class="Y"></span>
               <div class="close">Close</div>
             </button>
           </li>
         </ul>
+
+        <!-- delete project button -->
+        <button class="buttonD" type="button">
+          <span class="button__text">Delete</span>
+          <span class="button__icon"
+            ><svg
+              class="svg"
+              height="512"
+              viewBox="0 0 512 512"
+              width="512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title></title>
+              <path
+                d="M112,112l20,320c.95,18.49,14.4,32,32,32H348c17.67,0,30.87-13.51,32-32l20-320"
+                style="
+                  fill: none;
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 32px;
+                "
+              ></path>
+              <line
+                style="
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-miterlimit: 10;
+                  stroke-width: 32px;
+                "
+                x1="80"
+                x2="432"
+                y1="112"
+                y2="112"
+              ></line>
+              <path
+                d="M192,112V72h0a23.93,23.93,0,0,1,24-24h80a23.93,23.93,0,0,1,24,24h0v40"
+                style="
+                  fill: none;
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 32px;
+                "
+              ></path>
+              <line
+                style="
+                  fill: none;
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 32px;
+                "
+                x1="256"
+                x2="256"
+                y1="176"
+                y2="400"
+              ></line>
+              <line
+                style="
+                  fill: none;
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 32px;
+                "
+                x1="184"
+                x2="192"
+                y1="176"
+                y2="400"
+              ></line>
+              <line
+                style="
+                  fill: none;
+                  stroke: #fff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 32px;
+                "
+                x1="328"
+                x2="320"
+                y1="176"
+                y2="400"
+              ></line></svg
+          ></span>
+        </button>
       </div>
     </main>
     <footer>
