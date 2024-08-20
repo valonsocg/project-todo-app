@@ -111,10 +111,10 @@ function renderMainCard(project) {
   const mainCard = document.createElement("div");
   mainCard.classList.add("main-project-card");
   const mainCardMarkup = `<h3 contenteditable>${project.name}</h3>
-            <input type='text' placeholder='Enter a description of your project.'></input>
+            <input type='text' class='project-description' placeholder='Enter a description of your project.' value='${project.description}' ></input>
             <div class="main-date-priority">
-              <p>Target Date <input type="date" value="${project.targetDate}"></input></p>
-          <p>Priority <span>${project.priority}</span></p>
+              <p>Target Date <input type="date" class='target-date' value="${project.targetDate}"></input></p>
+          <p class='priority-button' >Priority <span class='priority-name' >${project.priority}</span></p>
             </div>
             <ul class="main-tasks-ul">
                
@@ -233,6 +233,44 @@ function renderMainCard(project) {
 
   project.tasks.forEach(renderTasks);
 
+  //manage priority button
+  const priorityBtn = mainCard.querySelector(".priority-button");
+  const priorityName = mainCard.querySelector(".priority-name");
+
+  priorityBtn.addEventListener("click", updatePriority);
+
+  function updatePriority() {
+    const priorities = ["LOW", "NORMAL", "HIGH"];
+    let currentPriorityIndex = priorities.indexOf(project.priority);
+    currentPriorityIndex = (currentPriorityIndex + 1) % priorities.length;
+    project.priority = priorities[currentPriorityIndex];
+    priorityName.textContent = project.priority;
+    saveProjectToLocalStorage();
+    updateProjectCard(project);
+  }
+
+  //save name
+  const nameProject = mainCard.querySelector("h3");
+  nameProject.addEventListener("input", () => {
+    project.name = nameProject.textContent;
+    saveProjectToLocalStorage();
+    updateProjectCard(project);
+  });
+
+  //save description
+  const descriptionProject = mainCard.querySelector(".project-description");
+  descriptionProject.addEventListener("input", () => {
+    project.description = descriptionProject.value;
+    saveProjectToLocalStorage();
+  });
+
+  //save date
+  const targetDateProject = mainCard.querySelector(".target-date");
+  targetDateProject.addEventListener("change", () => {
+    project.targetDate = targetDateProject.value;
+    saveProjectToLocalStorage();
+  });
+
   //delete project button
   const deleteBtn = mainCard.querySelector(".buttonD");
   deleteBtn.addEventListener("click", () => {
@@ -271,6 +309,7 @@ function renderMainCard(project) {
     taskForm.reset();
 
     localStorage.setItem("projects", JSON.stringify(projects));
+
     renderTasks(task);
   });
 
@@ -291,7 +330,7 @@ function renderMainCard(project) {
     }/>
                     <span class="checkmark"></span>
                   </label>
-                  <span contenteditable>${task.name}</span>
+                  <span class='task-name' contenteditable>${task.name}</span>
                 </div>
                 <button class="buttonX">
                   <span class="X"></span>
@@ -302,5 +341,38 @@ function renderMainCard(project) {
     taskCard.innerHTML = taskCardMarkup;
 
     taskUl.appendChild(taskCard);
+
+    //save tasks
+    const taskNameEl = taskCard.querySelector(".task-name");
+    taskNameEl.addEventListener("input", () => {
+      task.name = taskNameEl.textContent;
+      saveProjectToLocalStorage();
+    });
+
+    //delete task button
+    const deleteTaskBtn = taskCard.querySelector(".buttonX");
+    deleteTaskBtn.addEventListener("click", () => {
+      const taskIndex = project.tasks.findIndex((t) => t.id === task.id);
+      if (taskIndex > -1) {
+        project.tasks.splice(taskIndex, 1);
+      }
+      localStorage.setItem("projects", JSON.stringify(projects));
+      taskCard.remove();
+    });
+  }
+}
+
+function saveProjectToLocalStorage() {
+  localStorage.setItem("projects", JSON.stringify(projects));
+}
+
+function updateProjectCard(project) {
+  const selectedProject = sidebarProjects.querySelector(
+    `.aside-card[id='${project.id}']`
+  );
+  if (selectedProject) {
+    selectedProject.querySelector("h4").textContent = project.name;
+    selectedProject.querySelector(".aside-card span").textContent =
+      project.priority;
   }
 }
