@@ -41,6 +41,11 @@ form.addEventListener("submit", (e) => {
 
   renderProjectCard(project);
 
+  const allCardProjects = document.querySelectorAll(".aside-card");
+  allCardProjects.forEach((card) => {
+    card.classList.remove("active");
+  });
+
   const newProjectEl = sidebarProjects.querySelector(
     `.aside-card[id='${project.id}']`
   );
