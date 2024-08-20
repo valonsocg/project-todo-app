@@ -117,6 +117,18 @@ function renderMainCard(project) {
           <p>Priority <span>${project.priority}</span></p>
             </div>
             <ul class="main-tasks-ul">
+               <form action="" class="main-task-li" id="task-form" >
+    <div class="task-content">
+        <input type="text" class="task-input" placeholder="Add new Task"></>
+      </div>
+      <button class="buttonAdd">
+  <span class="horizontal"></span>
+  <span class="vertical"></span>
+  <div class="close">Add</div>
+</button>
+
+  </form>
+
               <li class="main-task-li">
                 <div class="task-content">
                   <label class="checkbox-btn">
@@ -147,7 +159,11 @@ function renderMainCard(project) {
                   <div class="close">Close</div>
                 </button>
               </li>
+              
             </ul>
+
+            <div class='main-card-btns'>
+            
     
             <button class="buttonD" type="button">
               <span class="button__text">Delete</span>
@@ -232,7 +248,7 @@ function renderMainCard(project) {
                     y2="400"
                   ></line></svg
               ></span>
-            </button>`;
+            </button></div>`;
   mainCard.innerHTML = mainCardMarkup;
   mainContainer.appendChild(mainCard);
 
