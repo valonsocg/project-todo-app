@@ -60,7 +60,7 @@ form.addEventListener("submit", (e) => {
   console.log(projects);
 });
 
-//manage li click event to stablish an active class and show the project in the main section
+//manage li click event to establish an active class and show the project in the main section
 sidebarProjects.addEventListener("click", (e) => {
   if (e.target.tagName.toLowerCase() === "li") {
     const allCardProjects = document.querySelectorAll(".aside-card");
@@ -91,11 +91,6 @@ function renderProjectCard(project) {
           </div>`;
 
   asideCard.innerHTML = asideCardMarkup;
-
-  const allCardProjects = document.querySelectorAll(".aside-card");
-  allCardProjects.forEach((card) => {
-    card.classList.remove("active");
-  });
 
   if (asideCard.id === projectId) {
     asideCard.classList.add("active");
