@@ -117,7 +117,8 @@ function renderMainCard(project) {
           <p>Priority <span>${project.priority}</span></p>
             </div>
             <ul class="main-tasks-ul">
-               <form action="" class="main-task-li" id="task-form" >
+               
+            <form action="" class="main-task-li" id="task-form" >
     <div class="task-content">
         <input type="text" class="task-input" placeholder="Add new Task"></>
       </div>
@@ -128,38 +129,12 @@ function renderMainCard(project) {
 </button>
 
   </form>
-
-              <li class="main-task-li">
-                <div class="task-content">
-                  <label class="checkbox-btn">
-                    <label for="checkbox"></label>
-                    <input id="1" type="checkbox" />
-                    <span class="checkmark"></span>
-                  </label>
-                  <span contenteditable>Learn Java</span>
-                </div>
-                <button class="buttonX">
-                  <span class="X"></span>
-                  <span class="Y"></span>
-                  <div class="close">Close</div>
-                </button>
-              </li>
-              <li class="main-task-li complete">
-                <div class="task-content">
-                  <label class="checkbox-btn">
-                    <label for="checkbox"></label>
-                    <input id="2" type="checkbox" checked />
-                    <span class="checkmark"></span>
-                  </label>
-                  <span contenteditable>Learn Python</span>
-                </div>
-                <button class="buttonX">
-                  <span class="X"></span>
-                  <span class="Y"></span>
-                  <div class="close">Close</div>
-                </button>
-              </li>
+  
+              <ul class='tasks-ul'>
               
+              </ul>
+
+
             </ul>
 
             <div class='main-card-btns'>
@@ -252,6 +227,13 @@ function renderMainCard(project) {
   mainCard.innerHTML = mainCardMarkup;
   mainContainer.appendChild(mainCard);
 
+  const taskForm = document.querySelector("#task-form");
+  const taskFormInput = document.querySelector(".task-input");
+  const taskUl = document.querySelector(".tasks-ul");
+
+  project.tasks.forEach(renderTasks);
+
+  //delete project button
   const deleteBtn = mainCard.querySelector(".buttonD");
   deleteBtn.addEventListener("click", () => {
     const selectedProjectCard = document.querySelector(
@@ -268,4 +250,57 @@ function renderMainCard(project) {
 
     projectId = null;
   });
+
+  //add tasks
+
+  taskForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const inputValue = taskFormInput.value;
+
+    if (inputValue === "") return;
+
+    const task = {
+      id: new Date().getTime(),
+      name: inputValue,
+      isCompleted: false,
+    };
+
+    project.tasks.push(task);
+    console.log(inputValue);
+
+    taskForm.reset();
+
+    localStorage.setItem("projects", JSON.stringify(projects));
+    renderTasks(task);
+  });
+
+  function renderTasks(task) {
+    //render project tasks
+    const taskCard = document.createElement("li");
+    taskCard.classList.add("main-task-li");
+    taskCard.setAttribute("id", task.id);
+    if (task.isCompleted) {
+      taskCard.classList.add("active");
+    }
+
+    const taskCardMarkup = `<div class="task-content">
+                  <label class="checkbox-btn">
+                    <label for="checkbox"></label>
+                    <input id="${task.id}" type="checkbox" ${
+      task.isCompleted ? "checked" : ""
+    }/>
+                    <span class="checkmark"></span>
+                  </label>
+                  <span contenteditable>${task.name}</span>
+                </div>
+                <button class="buttonX">
+                  <span class="X"></span>
+                  <span class="Y"></span>
+                  <div class="close">Close</div>
+                </button>`;
+
+    taskCard.innerHTML = taskCardMarkup;
+
+    taskUl.appendChild(taskCard);
+  }
 }

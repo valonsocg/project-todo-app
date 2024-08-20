@@ -291,6 +291,13 @@ main {
   gap: 1rem;
 }
 
+.tasks-ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+}
+
 .main-task-li {
   list-style-type: none;
   display: flex;
@@ -306,10 +313,6 @@ main {
 .main-task-li.complete {
   text-decoration: line-through;
   color: var(--main-red);
-}
-
-.task-input {
-  outline: none;
 }
 
 .task-input:focus {
