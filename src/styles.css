@@ -242,16 +242,19 @@ main {
     color: var(--main-red);
   }
 
-  & p {
+  & input {
     font-size: 1.4rem;
     color: var(--main-blue);
     font-weight: 500;
+    background-color: transparent;
+    border: none;
   }
 }
 
 .main-date-priority {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   margin-top: 1rem;
   & p {
     background-color: var(--main-green);
@@ -259,6 +262,16 @@ main {
     border-radius: 1.5rem;
     font-weight: 500;
     color: var(--main-yellow);
+    height: 55px;
+    display: flex;
+    align-items: center;
+  }
+  & input {
+    color: var(--main-red);
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    width: 7.5em;
   }
   & span {
     color: var(--main-red);
